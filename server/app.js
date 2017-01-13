@@ -10,13 +10,18 @@ const config = require('config');
 
 const writeLog = require('./commonfunction').writeLog;
 
-const connection = mysql.createConnection({
-    host: config.get('mysql').host,
-    user: config.get('mysql').user,
-    password: config.get('mysql').password,
-    database: config.get('mysql').database,
-    charset: 'utf8mb4',
-});
+let connection;
+if (process.env.NODE_ENV === 'production') {
+    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URLmb4);
+} else {
+    connection = mysql.createConnection({
+        host: config.get('mysql').host,
+        user: config.get('mysql').user,
+        password: config.get('mysql').password,
+        database: config.get('mysql').database,
+        charset: 'utf8mb4',
+    });
+}
 
 const app = express();
 app.use(cors());
