@@ -1,0 +1,38 @@
+{
+  "name": "twitter_stream",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^3.1.0",
+    "nodemon": "^1.11.0",
+    "react-scripts": "0.8.5"
+  },
+  "dependencies": {
+    "antd": "^2.6.1",
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.2",
+    "config": "^1.24.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "fs-promise": "^1.0.0",
+    "knex": "^0.12.6",
+    "material-ui": "^0.16.6",
+    "morgan": "^1.7.0",
+    "mysql": "^2.12.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1",
+    "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.2",
+    "twit": "^2.2.5"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node server/app.js",
+    "react": "react-scripts start",
+    "node": "nodemon --watch server --debug=32836 --nolazy --harmony server/app.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "concurrently --kill-others \"react-scripts start\" \"nodemon --watch server --debug=32836 --nolazy server/app.js\""
+  }
+}

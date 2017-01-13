@@ -1,0 +1,8 @@
+{
+    "mysql": {
+        "host": "127.0.0.1",
+        "user": "ayush",
+        "password": "f6Ugm4cgPfGr",
+        "database": "twitter"
+    }
+}
