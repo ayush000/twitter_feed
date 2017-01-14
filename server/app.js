@@ -5,23 +5,23 @@ const cors = require('cors');
 const path = require('path');
 const Twit = require('twit');
 const socket_io = require('socket.io');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 const config = require('config');
 
 const writeLog = require('./commonfunction').writeLog;
 
 let connection;
-if (process.env.NODE_ENV === 'production') {
-    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URLmb4);
-} else {
-    connection = mysql.createConnection({
-        host: config.get('mysql').host,
-        user: config.get('mysql').user,
-        password: config.get('mysql').password,
-        database: config.get('mysql').database,
-        charset: 'utf8mb4',
-    });
-}
+// if (process.env.NODE_ENV === 'production') {
+//     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URLmb4);
+// } else {
+//     connection = mysql.createConnection({
+//         host: config.get('mysql').host,
+//         user: config.get('mysql').user,
+//         password: config.get('mysql').password,
+//         database: config.get('mysql').database,
+//         charset: 'utf8mb4',
+//     });
+// }
 
 const app = express();
 app.use(cors());
@@ -66,11 +66,11 @@ io.on('connection', function (socket) {
             const text = tweet.text;
             socket.emit('tweet', text);
 
-            connection.query('INSERT INTO tweets (tweet, hashtag) VALUES (?, ?) ON DUPLICATE KEY UPDATE tweet=?, hashtag=?',
-                [text, hashtag, text, hashtag],
-                (err) => {
-                    if (err) writeLog(err);
-                });
+            // connection.query('INSERT INTO tweets (tweet, hashtag) VALUES (?, ?) ON DUPLICATE KEY UPDATE tweet=?, hashtag=?',
+            //     [text, hashtag, text, hashtag],
+            //     (err) => {
+            //         if (err) writeLog(err);
+            //     });
         });
     });
     socket.on('disconnect', () => {
