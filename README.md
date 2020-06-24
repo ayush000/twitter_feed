@@ -1,3 +1,5 @@
+# Watch it [live](twitter-stream21.herokuapp.com/)
+
 First create open your mysql user and run migrate.sql on it to create database and tables. `mysql -u USERNAME -p PASSWORD < ./migrate.sql`
 Put your mysql credentials in config/default.config
 
